@@ -1,4 +1,7 @@
+'use client';
+
 import Image from 'next/image';
+import { useRouter, useParams } from 'next/navigation';
 
 export interface UserDetailPageProps {
   params: {
@@ -6,9 +9,8 @@ export interface UserDetailPageProps {
   };
 }
 
-export default function UserDetailPage({ params }: UserDetailPageProps) {
-  const { userId } = params;
-  console.log('userId', params);
+export default function UserDetailPage() {
+  const router = useRouter();
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
@@ -25,7 +27,7 @@ export default function UserDetailPage({ params }: UserDetailPageProps) {
           <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
             Detail user
           </h1>
-          <p>User ID: {userId}</p>
+          <p>User ID: {JSON.stringify(useParams().userId)}</p>
         </div>
       </main>
     </div>
